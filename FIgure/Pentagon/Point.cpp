@@ -1,6 +1,7 @@
 #include "Point.h"
 #include <string>
 
+
 using namespace PointClass;
 Point::Point(const double x, const  double y)
 	:abscissa(x), ordinate(y)
@@ -9,9 +10,9 @@ Point::Point(const double x, const  double y)
 
 std::string PointClass::Point::to_string()
 {
-	std::string pointString;
-	pointString += '(' + std::to_string(int(abscissa)) + ',' + std::to_string(int(ordinate)) + ')';
-	return pointString;
+	stringstream buffer;
+	buffer << '(' << this->abscissa << ',' << this->ordinate << ')';
+	return buffer.str();
 }
 
 std::ostream& PointClass::operator<<(std::ostream& out, const Point& point)

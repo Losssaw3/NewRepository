@@ -1,5 +1,4 @@
-#include "Pentagon.h"
-#include <sstream>
+ï»¿#include "Pentagon.h"
 
 using namespace PentagonClass;
 Pentagon::Pentagon(const double edge, const Point centre)
@@ -7,7 +6,7 @@ Pentagon::Pentagon(const double edge, const Point centre)
 {
 	if (!isCorrect(this->edge))
 	{
-		throw std::out_of_range("Ðåáðî íå ìîæåò áûòü îòðèöàòåëüíûì!");
+		throw std::out_of_range("Ð ÐµÐ±Ñ€Ð¾ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼!");
 	}
 	this->radius = abs(edge / (2 * cos(alpha * M_PI / 180)));
 	for (size_t i = 0; i < pentagonEdges; i++)
@@ -38,15 +37,9 @@ bool Pentagon::isCorrect(const double edge) const
 	return (edge > 0);
 }
 
-double Pentagon::getPerimeter()
+double Pentagon::getPerimeter() const
 {
-	double perimeter = 0;
-	for (size_t i = 0; i < pentagonEdges; i++)
-	{
-		perimeter += (distance(pentagonPoints[i], pentagonPoints[i + 1]));
-	}
-	return perimeter;
-
+	return edge * pentagonEdges;
 }
 
 double Pentagon::getArea() const
@@ -62,12 +55,12 @@ bool Pentagon::operator==(const Pentagon& p2)
 
 std::string PentagonClass::Pentagon::ToString()
 {
-	std::string pentagonString;
+	stringstream buffer;
 	for (auto point : pentagonPoints)
 	{
-		pentagonString += point.to_string();
+		buffer << point.to_string();
 	}
-	return pentagonString;
+	return buffer.str();
 }
 
 bool Pentagon::operator!=(const Pentagon& p2)

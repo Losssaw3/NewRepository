@@ -34,7 +34,7 @@ namespace PentagonClass
 		@brief function which calculates pentagon peremeter
 		@return value of pentagon perimeter
 		*/
-		double getPerimeter();
+		double getPerimeter() const;
 
 		/*
 		@brief function which calculates pentagon area
